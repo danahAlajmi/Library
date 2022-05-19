@@ -8,6 +8,7 @@ class MembersStore {
     makeObservable(this, {
       members: observable,
       fetchMembers: action,
+      createMember: action,
     });
   }
 
@@ -16,14 +17,24 @@ class MembersStore {
       const response = await axios.get(
         'https://library-borrow-system.herokuapp.com/api/members'
       );
-      console.log(response.data);
+      // console.log(response.data);
 
       this.members = response.data;
     } catch (error) {
       console.log('fetchMembers', error);
     }
   };
-
+  createMember = async (member) => {
+    try {
+      const response = await axios.post(
+        'https://library-borrow-system.herokuapp.com/api/members',
+        member
+      );
+      this.members = [...this.members, response.data];
+    } catch (error) {
+      console.log('createMember', error);
+    }
+  };
   //   createRoom = async (room) => {
   //     room.id = this.rooms[this.rooms.length - 1].id + 1;
   //     room.slug = slugify(room.title);

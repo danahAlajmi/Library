@@ -16,11 +16,23 @@ class BooksStore {
       const response = await axios.get(
         'https://library-borrow-system.herokuapp.com/api/books'
       );
-      console.log(response.data);
+      // console.log(response.data);
 
       this.books = response.data;
     } catch (error) {
       console.log('fetchBooks', error);
+    }
+  };
+
+  createBook = async (book) => {
+    try {
+      const response = await axios.post(
+        'https://library-borrow-system.herokuapp.com/api/books',
+        book
+      );
+      this.books = [...this.books, response.data];
+    } catch (error) {
+      console.log('createBook', error);
     }
   };
 
