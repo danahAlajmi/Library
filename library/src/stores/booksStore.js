@@ -1,5 +1,6 @@
 import { makeObservable, observable, action } from 'mobx';
 import axios from 'axios';
+import membersStore from './membersStore';
 
 class BooksStore {
   books = [];
@@ -8,6 +9,8 @@ class BooksStore {
     makeObservable(this, {
       books: observable,
       fetchBooks: action,
+      returnBook: action,
+      borrowBook: action,
     });
   }
 
@@ -36,21 +39,33 @@ class BooksStore {
     }
   };
 
-  //   createRoom = async (room) => {
-  //     room.id = this.rooms[this.rooms.length - 1].id + 1;
-  //     room.slug = slugify(room.title);
-  //     this.rooms.push(room);
+  returnBook = async (book) => {
+    try {
+      const response = await axios.put(
+        ` https://library-borrow-system.herokuapp.com/api/books/${
+          book._id
+        }/return/${book.borrowedBy[book.borrowedBy.length - 1]}`
+      );
+      this.books = [...this.books, response.data];
+    } catch (error) {
+      console.log('returnBook', error);
+    }
+  };
 
-  //     try {
-  //       const response = await axios.post(
-  //         'https://coded-task-axios-be.herokuapp.com/rooms',
-  //         room
-  //       );
-  //       this.rooms = [...this.rooms, response.data];
-  //     } catch (error) {
-  //       console.log('createRoom', error);
-  //     }
-  //   };
+  borrowBook = async (book, memberName) => {
+    const member = membersStore.members.find(
+      (m) => `${m.firstName} ${m.lastName}` === memberName
+    );
+
+    try {
+      const response = await axios.put(
+        ` https://library-borrow-system.herokuapp.com/api/books/${book._id}/borrow/${member._id}`
+      );
+      this.books = [...this.books, response.data];
+    } catch (error) {
+      console.log('borrowBook', error);
+    }
+  };
 }
 
 const booksStore = new BooksStore();

@@ -6,7 +6,7 @@ export default function CreateBookModal(props) {
   const [book, setBook] = useState({
     author: '',
     title: '',
-    genres: [],
+    genres: ['Fantasy'],
   });
   const handleChange = (event) => {
     setBook({ ...book, [event.target.name]: event.target.value });
@@ -35,7 +35,11 @@ export default function CreateBookModal(props) {
           <br />
           <InputGroup>
             <InputGroup.Text>Genres</InputGroup.Text>
-            <Form.Control type="text" name="genres" onChange={handleChange} />
+            <Form.Control
+              type="checkbox"
+              name="genres"
+              onChange={handleChange}
+            />
           </InputGroup>
         </Form>
       </Modal.Body>

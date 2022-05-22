@@ -6,7 +6,7 @@ export default function CreateMemberModal(props) {
   const [member, setMember] = useState({
     firstName: '',
     lastName: '',
-    membership: '',
+    membership: 'silver',
   });
   const handleChange = (event) => {
     setMember({ ...member, [event.target.name]: event.target.value });
@@ -38,12 +38,16 @@ export default function CreateMemberModal(props) {
           </InputGroup>
           <br />
           <InputGroup>
-            <InputGroup.Text>Membership</InputGroup.Text>
+            <InputGroup.Text>membership</InputGroup.Text>
+
             <Form.Control
               type="text"
               name="membership"
               onChange={handleChange}
             />
+            {/* /*{' '}
+            <InputGroup.Checkbox aria-label="Checkbox for following text input" />
+            <Form.Control aria-label="Text input with checkbox" /> */}
           </InputGroup>
         </Form>
       </Modal.Body>

@@ -21,7 +21,7 @@ function Members() {
         <span onClick={openModal}>Add Member</span>
         <CreateMemberModal isOpen={isOpen} closeModal={closeModal} />
       </button>
-      ;<div className="grid-container">{membersList}</div>
+      <div className="grid-container">{membersList}</div>
     </div>
   );
 }

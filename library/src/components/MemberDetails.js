@@ -16,6 +16,7 @@ function MemberDetails() {
       {' '}
       <p>{`Member: ${member.firstName} ${member.lastName}`}</p>
       <p>{`Membership: ${member.membership}`}</p>
+      <p>{`Membership: ${member._id}`}</p>
       <p>{`Currently Borrowed Books: ${member.currentlyBorrowedBooks}`}</p>
     </div>
   );
