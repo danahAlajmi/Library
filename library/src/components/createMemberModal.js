@@ -16,6 +16,7 @@ export default function CreateMemberModal(props) {
     membersStore.createMember(member);
     props.closeModal();
   };
+  const memberships = ['platinum', 'silver', 'gold'];
   return (
     <Modal centered show={props.isOpen} onHide={props.closeModal}>
       <Modal.Header closeButton>
@@ -37,7 +38,7 @@ export default function CreateMemberModal(props) {
             <Form.Control type="text" name="lastName" onChange={handleChange} />
           </InputGroup>
           <br />
-          <InputGroup>
+          {/* <InputGroup>
             <InputGroup.Text>membership</InputGroup.Text>
 
             <Form.Control
@@ -45,9 +46,20 @@ export default function CreateMemberModal(props) {
               name="membership"
               onChange={handleChange}
             />
-            {/* /*{' '}
-            <InputGroup.Checkbox aria-label="Checkbox for following text input" />
-            <Form.Control aria-label="Text input with checkbox" /> */}
+          
+          </InputGroup> */}
+          {'Select a Membership:'}
+          <InputGroup aria-label="Select a Membership:">
+            {memberships.map((mem) => (
+              <Form.Check
+                inline
+                label={mem}
+                value={mem}
+                name="membership"
+                type="radio"
+                onClick={handleChange}
+              />
+            ))}
           </InputGroup>
         </Form>
       </Modal.Body>

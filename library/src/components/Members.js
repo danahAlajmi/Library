@@ -15,9 +15,9 @@ function Members() {
     <MemberItem member={member} key={member._id} />
   ));
   return (
-    <div>
+    <div className="body">
       <button className="btn">
-        <i className="fa fa-plus"></i>
+        {/* <i className="fa fa-plus"></i> */}
         <span onClick={openModal}>Add Member</span>
         <CreateMemberModal isOpen={isOpen} closeModal={closeModal} />
       </button>

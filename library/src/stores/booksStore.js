@@ -62,6 +62,7 @@ class BooksStore {
         ` https://library-borrow-system.herokuapp.com/api/books/${book._id}/borrow/${member._id}`
       );
       this.books = [...this.books, response.data];
+      console.log(response.data);
     } catch (error) {
       console.log('borrowBook', error);
     }

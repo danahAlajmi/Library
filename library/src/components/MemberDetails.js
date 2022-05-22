@@ -1,5 +1,6 @@
 import React from 'react';
 import membersStore from '../stores/membersStore';
+import booksStore from '../stores/booksStore';
 
 import { useParams, Navigate } from 'react-router-dom';
 
@@ -11,13 +12,23 @@ function MemberDetails() {
   if (member == undefined) {
     return <Navigate to="/" />;
   }
+  let cbb = [];
+  member.currentlyBorrowedBooks.map((mem) => {
+    booksStore.books.forEach((boook) => {
+      if (boook._id == mem) {
+        cbb.push(boook.title);
+      }
+    });
+  });
+  if (cbb.length == 0) {
+    cbb = 'None';
+  }
   return (
     <div>
       {' '}
       <p>{`Member: ${member.firstName} ${member.lastName}`}</p>
       <p>{`Membership: ${member.membership}`}</p>
-      <p>{`Membership: ${member._id}`}</p>
-      <p>{`Currently Borrowed Books: ${member.currentlyBorrowedBooks}`}</p>
+      <p>{`Currently Borrowed Books: ${cbb}`}</p>
     </div>
   );
 }

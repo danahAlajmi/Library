@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import booksStore from '../stores/booksStore';
 import membersStore from '../stores/membersStore';
 import '../App.css';
+import { observer } from 'mobx-react';
 
 import { useParams, Navigate } from 'react-router-dom';
 
@@ -35,7 +36,7 @@ function BookDetails() {
       <p>{`title: ${book.title}`}</p>
       <p>{`Genres: ${book.genres}`}</p>
       <p>{`Currently Borrowed By: ${bookCurrentlyBorrowedByMemberFirstName} ${bookCurrentlyBorrowedByMemberLastName}`}</p>
-      <img className="bookList-image" src={book.image} />
+      <img className="bookDetails-image" src={book.image} />
       <div className="borrow-return">
         <div className="borrow-member">
           <div>
@@ -69,4 +70,4 @@ function BookDetails() {
     </div>
   );
 }
-export default BookDetails;
+export default observer(BookDetails);
