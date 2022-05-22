@@ -18,7 +18,7 @@ function MemberItem({ member }) {
   return (
     <Link to={`/members/${member.slug}`}>
       <div className="grid-item">
-        <p>{`Member: ${member.firstName} ${member.lastName}`}</p>
+        <p>{`${member.firstName} ${member.lastName}`}</p>
       </div>
     </Link>
   );

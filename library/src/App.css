@@ -124,10 +124,14 @@ a:active {
 }
 .nav {
   color: white;
+  background: #1f2d74;
   display: flex;
   justify-content: space-around;
   /* background-color: #9a8ab1; */
 }
 .top {
   display: flex;
+}
+.textt {
+  color: white;
 }

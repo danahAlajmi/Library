@@ -4,7 +4,7 @@ import membersStore from './membersStore';
 
 class BooksStore {
   books = [];
-
+  msg;
   constructor() {
     makeObservable(this, {
       books: observable,

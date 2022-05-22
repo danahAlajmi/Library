@@ -30,7 +30,7 @@ function BookDetails() {
   }
 
   return (
-    <div>
+    <div className="textt">
       {' '}
       <p>{`Author: ${book.author} `}</p>
       <p>{`title: ${book.title}`}</p>

@@ -24,7 +24,7 @@ function MemberDetails() {
     cbb = 'None';
   }
   return (
-    <div>
+    <div className="textt">
       {' '}
       <p>{`Member: ${member.firstName} ${member.lastName}`}</p>
       <p>{`Membership: ${member.membership}`}</p>
