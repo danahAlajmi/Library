@@ -1,8 +1,8 @@
-import React from 'react';
-import membersStore from '../stores/membersStore';
-import booksStore from '../stores/booksStore';
+import React from "react";
+import membersStore from "../stores/membersStore";
+import booksStore from "../stores/booksStore";
 
-import { useParams, Navigate } from 'react-router-dom';
+import { useParams, Navigate } from "react-router-dom";
 
 function MemberDetails() {
   const { memberSlug } = useParams();
@@ -21,14 +21,17 @@ function MemberDetails() {
     });
   });
   if (cbb.length == 0) {
-    cbb = 'None';
+    cbb = "None";
   }
   return (
-    <div className="textt">
-      {' '}
-      <p>{`Member: ${member.firstName} ${member.lastName}`}</p>
-      <p>{`Membership: ${member.membership}`}</p>
-      <p>{`Currently Borrowed Books: ${cbb}`}</p>
+    <div className="body">
+      <div className="textt">
+        {" "}
+        <br />
+        <h3>{`Member: ${member.firstName} ${member.lastName}`}</h3>
+        <h3>{`Membership: ${member.membership}`}</h3>
+        <h3>{`Currently Borrowed Books: ${cbb}`}</h3>
+      </div>
     </div>
   );
 }

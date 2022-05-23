@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import membersStore from '../stores/membersStore';
-import MemberItem from './MemberItem';
-import { observer } from 'mobx-react';
-import CreateMemberModal from './createMemberModal';
+import React, { useState } from "react";
+import membersStore from "../stores/membersStore";
+import MemberItem from "./MemberItem";
+import { observer } from "mobx-react";
+import CreateMemberModal from "./createMemberModal";
 
 function Members() {
   const [isOpen, setIsOpen] = useState(false);
@@ -18,7 +18,9 @@ function Members() {
     <div className="body">
       <button className="btn">
         {/* <i className="fa fa-plus"></i> */}
-        <span onClick={openModal}>Add Member</span>
+        <span className="add-btn" onClick={openModal}>
+          Add Member
+        </span>
         <CreateMemberModal isOpen={isOpen} closeModal={closeModal} />
       </button>
       <div className="grid-container">{membersList}</div>

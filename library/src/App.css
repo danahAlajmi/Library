@@ -1,6 +1,5 @@
 .App {
   text-align: center;
-  background: #3b51c0;
 }
 /* .grid-container {
   display: grid;
@@ -18,6 +17,10 @@
   width: 20%;
 } */
 .body {
+  background: #88a2bb;
+
+  background-size: contain;
+
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -37,9 +40,10 @@
 .grid-item {
   height: 400px;
   width: 400px;
-  background-color: rgba(245, 245, 245, 0.8);
+  background-color: #34495e;
   font-size: 20px;
-  color: #000;
+  text-decoration: none;
+  color: rgb(255, 255, 255);
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -48,8 +52,8 @@
   border-radius: 5px;
   overflow: scroll;
 }
-.btn {
-  background-color: #fff;
+.return-btn {
+  background-color: #34495e;
   border: none;
   outline: none;
   cursor: pointer;
@@ -59,7 +63,30 @@
   border-radius: 5px;
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.02);
   display: flex;
-  color: #000;
+  color: rgb(255, 255, 255);
+  border: #000;
+  border-width: 1px;
+  border-style: solid;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  font-family: "Times New Roman", Times, serif;
+  transition: all 0.3s ease-in-out;
+}
+.borrow-btn {
+  background-color: #34495e;
+  font-family: "Times New Roman", Times, serif;
+
+  border: none;
+  outline: none;
+  cursor: pointer;
+  width: 230px;
+  height: 47px;
+  line-height: 47px;
+  border-radius: 5px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.02);
+  display: flex;
+  color: rgb(255, 255, 255);
   border: #000;
   border-width: 1px;
   border-style: solid;
@@ -68,23 +95,46 @@
   padding: 0;
   transition: all 0.3s ease-in-out;
 }
-.btn:hover {
-  background-color: #4664ff;
+.borrow-btn:hover {
+  background-color: green;
   color: #fff;
   transform: scale(1.02);
 }
-.btn i {
-  flex: 0.2;
+
+.return-btn:hover {
+  background-color: red;
+  color: #fff;
+  transform: scale(1.02);
+}
+.add-btn {
+  background-color: #34495e;
+  font-family: "Times New Roman", Times, serif;
+
+  border: none;
+  outline: none;
+  cursor: pointer;
+  width: 230px;
+  height: 47px;
+  line-height: 47px;
+  border-radius: 5px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.02);
   display: flex;
+  color: rgb(255, 255, 255);
+  border: #000;
+  border-width: 1px;
+  border-style: solid;
   justify-content: center;
   align-items: center;
-  height: 100%;
-  font-size: 18px;
-  border-right: 1px solid #ebe7fb;
+  padding: 0;
+  transition: all 0.3s ease-in-out;
 }
-.btn span {
-  flex: 0.8;
-  display: flex;
+.add-btn:hover {
+  background-color: #88a2bb;
+  color: rgb(0, 0, 0);
+  transform: scale(1.02);
+}
+
+.container {
   justify-content: center;
   align-items: center;
 }
@@ -112,26 +162,73 @@
   line-height: 47px;
   border-radius: 5px;
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.02);
+  justify-content: space-between;
+  background-color: #34495e;
+  font-family: "Times New Roman", Times, serif;
+  text-align: center;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  width: 230px;
+  height: 47px;
+  line-height: 47px;
+  border-radius: 5px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.02);
+  display: flex;
+  color: rgb(255, 255, 255);
+  border: #000;
+  border-width: 1px;
+  border-style: solid;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  transition: all 0.3s ease-in-out;
+}
+h3 {
+  font-family: "Times New Roman", Times, serif;
 }
 .bookDetails-image {
-  width: 20%;
+  width: 15%;
 }
-a,
+/* a,
 a:visited,
 a:hover,
 a:active {
   color: inherit;
-}
+} */
+
 .nav {
-  color: white;
-  background: #1f2d74;
-  display: flex;
+  margin: 27px auto 0;
+  font-family: "Times New Roman", Times, serif;
+  position: relative;
+  width: 590px;
+  height: 50px;
+  background-color: #34495e;
+  border-radius: 8px;
+  font-size: 0;
   justify-content: space-around;
-  /* background-color: #9a8ab1; */
 }
+.nav .a {
+  line-height: 50px;
+  height: 100%;
+  font-size: 15px;
+  display: inline-block;
+  position: relative;
+  z-index: 1;
+  text-decoration: none;
+  text-transform: uppercase;
+  text-align: center;
+  color: white;
+  cursor: pointer;
+}
+
 .top {
   display: flex;
 }
 .textt {
-  color: white;
+  color: rgb(0, 0, 0);
+}
+.home-image {
+  height: 80%;
+  width: 80%;
 }

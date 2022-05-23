@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
-import booksStore from '../stores/booksStore';
-import membersStore from '../stores/membersStore';
-import '../App.css';
-import { observer } from 'mobx-react';
+import React, { useState } from "react";
+import booksStore from "../stores/booksStore";
+import membersStore from "../stores/membersStore";
+import "../App.css";
+import { observer } from "mobx-react";
 
-import { useParams, Navigate } from 'react-router-dom';
+import { useParams, Navigate } from "react-router-dom";
 
 function BookDetails() {
-  const [member, setMember] = useState('');
+  const [member, setMember] = useState("");
   const { bookSlug } = useParams();
   const book = booksStore.books.find((book) => book.slug == bookSlug);
 
@@ -16,8 +16,8 @@ function BookDetails() {
   }
 
   let bookCurrentlyBorrowedByMemberID = 0;
-  let bookCurrentlyBorrowedByMemberFirstName = 'No';
-  let bookCurrentlyBorrowedByMemberLastName = 'One';
+  let bookCurrentlyBorrowedByMemberFirstName = "No";
+  let bookCurrentlyBorrowedByMemberLastName = "One";
   if (book.available === false) {
     bookCurrentlyBorrowedByMemberID =
       book.borrowedBy[book.borrowedBy.length - 1];
@@ -30,18 +30,22 @@ function BookDetails() {
   }
 
   return (
-    <div className="textt">
-      {' '}
-      <p>{`Author: ${book.author} `}</p>
-      <p>{`title: ${book.title}`}</p>
-      <p>{`Genres: ${book.genres}`}</p>
-      <p>{`Currently Borrowed By: ${bookCurrentlyBorrowedByMemberFirstName} ${bookCurrentlyBorrowedByMemberLastName}`}</p>
+    <div className="textt body">
+      {" "}
+      <h3>{`Author: ${book.author} `}</h3>
+      <h3>{`title: ${book.title}`}</h3>
+      <h3>{`Genres: ${book.genres}`}</h3>
+      <h3>{`Currently Borrowed By: ${bookCurrentlyBorrowedByMemberFirstName} ${bookCurrentlyBorrowedByMemberLastName}`}</h3>
+      <br />
       <img className="bookDetails-image" src={book.image} />
       <div className="borrow-return">
         <div className="borrow-member">
           <div>
-            <label>Member: </label>
-
+            <label>
+              <h3>Member:</h3>
+              {"    "}
+            </label>
+            <br />
             <select
               onChange={(e) => setMember(e.target.value)}
               className="select"
@@ -53,19 +57,22 @@ function BookDetails() {
                 >{`${member.firstName} ${member.lastName}`}</option>
               ))}
             </select>
+            <br />
+            <button
+              className="borrow-btn"
+              onClick={() => booksStore.borrowBook(book, member)}
+            >
+              Borrow
+            </button>
+            <br />
+            <button
+              className="return-btn"
+              onClick={() => booksStore.returnBook(book)}
+            >
+              Return
+            </button>
           </div>
-
-          <button
-            className="btn"
-            onClick={() => booksStore.borrowBook(book, member)}
-          >
-            Borrow
-          </button>
         </div>
-
-        <button className="btn" onClick={() => booksStore.returnBook(book)}>
-          Return
-        </button>
       </div>
     </div>
   );
